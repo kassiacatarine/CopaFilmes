@@ -13,4 +13,7 @@ export class SelectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public handleSubmitMovies() {
+  }
+
 }

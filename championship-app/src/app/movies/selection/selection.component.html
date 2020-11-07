@@ -1,19 +1,39 @@
-<div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="gappx">
-  <p fxFlex>
-    Selecionados: {{shoes.selectedOptions.selected.length}}
-  </p>
-</div>
-<div fxLayout="row" fxLayoutAlign="center">
-  <mat-selection-list
-    fxLayout="row wrap"
-    fxLayoutGap.gt-xs="20px" fxFlex.gt-xs="95%" fxFlexOffset.gt-xs="3"
-    fxLayoutGap.gt-md="40px" fxFlex.gt-md="95%" fxFlexOffset.gt-md="3"
-    fxFlexOffset.gt-lg="5"
-    #shoes
-  >
-    <mat-list-option class="mat-elevation-z1" checkboxPosition="before" *ngFor="let shoe of typesOfShoes" fxFlex.gt-xs="47%" fxFlex.gt-md="22%">
-      <h3 mat-line>{{shoe}}</h3>
-      <div mat-line>2018</div>
-    </mat-list-option>
-  </mat-selection-list>
+<div fxLayout="row" fxLayoutAlign="center center">
+  <form (onSubmit)="handleSubmitMovies()" fxFlex="90%">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between">
+      <div fxLayout="column">
+        <h2 fxFlex>
+          Selecionados
+        </h2>
+        {{movies.selectedOptions.selected.length}} de 8 filmes
+      </div>
+      <button mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="movies.selectedOptions.selected.length < 8"
+      >GERAR MEU CAMPEONATO</button>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center">
+      <mat-selection-list
+        fxLayout="row wrap"
+        fxLayoutGap.gt-xs="20px" fxFlexOffset.gt-xs="3"
+        fxLayoutGap.gt-md="35px"
+        fxFlexOffset.gt-lg="5"
+        fxFlex
+        #movies
+      >
+        <mat-list-option
+          class="mat-elevation-z1"
+          [disabled]="movies.selectedOptions.selected.length >= 8 && !movie.selected"
+          checkboxPosition="before"
+          *ngFor="let shoe of typesOfShoes"
+          fxFlex.gt-xs="47%" fxFlex.gt-md="22%"
+          #movie
+        >
+          <h3 mat-line>{{shoe}}</h3>
+          <div mat-line>2018</div>
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+  </form>
 </div>

@@ -6,6 +6,8 @@ import { SelectionComponent } from './selection/selection.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+
 
 
 @NgModule({
@@ -13,6 +15,7 @@ import { MatListModule } from '@angular/material/list';
   imports: [
     CommonModule,
     MatListModule,
+    MatButtonModule,
     FlexLayoutModule,
     MoviesRoutingModule
   ]
