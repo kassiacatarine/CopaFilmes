@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Championship.API.Config;
+using Championship.Application.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -95,7 +96,7 @@ namespace Championship.API
 
         public static void AddCustomApplicationServices(this IServiceCollection services)
         {
-            //services.AddHttpClient<IGoogleBookService, GoogleBookService>();
+            services.AddHttpClient<IMovieService, MovieService>();
             //services.AddSingleton<IBookService, BookService>();
         }
     }

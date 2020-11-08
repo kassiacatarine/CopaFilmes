@@ -15,5 +15,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.6.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Championship.Application\Championship.Application.csproj" />
+  </ItemGroup>
+
 
 </Project>
