@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Championship.Application.Services;
+using Championship.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -8,11 +11,15 @@ namespace Championship.API.Controllers.v1
     [ApiController]
     public class MoviesController : ControllerBase
     {
-        // GET: api/<MoviesController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IMovieService _service;
+        public MoviesController(IMovieService service)
         {
-            return new string[] { "value1", "value2" };
+            _service = service;
+        }
+        [HttpGet]
+        public async Task<IEnumerable<MovieViewModel>> GetAsync()
+        {
+            return await _service.GetMoviesAsync();
         }
     }
 }

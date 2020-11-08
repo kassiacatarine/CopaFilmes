@@ -1,8 +1,8 @@
 ﻿using Championship.Application.ViewModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Championship.Application.Services
@@ -25,8 +25,8 @@ namespace Championship.Application.Services
 
             response.EnsureSuccessStatusCode();
 
-            using var responseStream = await response.Content.ReadAsStreamAsync();
-            return await JsonSerializer.DeserializeAsync<IEnumerable<MovieViewModel>>(responseStream);
+            var jsonString = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<IEnumerable<MovieViewModel>>(jsonString);
         }
     }
 }

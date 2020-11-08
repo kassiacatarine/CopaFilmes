@@ -1,5 +1,6 @@
 ﻿using Championship.Application.Services;
 using Championship.Application.ViewModels;
+using FluentAssertions;
 using Moq;
 using Moq.Protected;
 using Newtonsoft.Json;
@@ -29,8 +30,8 @@ namespace Championship.UnitTests.Application
         {
             // Arrange
             string content = File.ReadAllText($"DataTests{Path.DirectorySeparatorChar}Movies.json");
-            var data = JsonConvert.DeserializeObject<IEnumerable<MovieViewModel>>(content);
-            var json = JsonConvert.SerializeObject(data);
+            var expected = JsonConvert.DeserializeObject<IEnumerable<MovieViewModel>>(content);
+            var json = JsonConvert.SerializeObject(expected);
             var response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
@@ -58,6 +59,7 @@ namespace Championship.UnitTests.Application
                ItExpr.Is<HttpRequestMessage>(req => req.Method == HttpMethod.Get),
                ItExpr.IsAny<CancellationToken>());
             Assert.Equal(16, result.Count());
+            result.Should().BeEquivalentTo(expected);
         }
     }
 }
