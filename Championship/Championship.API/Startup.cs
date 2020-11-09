@@ -1,19 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
 using Championship.API.Config;
+using Championship.Application.Mappers;
 using Championship.Application.Services;
+using Championship.Application.Validators;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning.Conventions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace Championship.API
 {
@@ -29,9 +27,12 @@ namespace Championship.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(cfg => cfg.AddProfile<MappingProfile>(), AppDomain.CurrentDomain.GetAssemblies());
+
             services
                 .AddCustomApiVersioning()
                 .AddCustomSwagger()
+                .AddCustomFluentValidation()
                 .AddCustomApplicationServices();
 
             services.AddControllers();
@@ -93,11 +94,24 @@ namespace Championship.API
             });
             return services;
         }
+        public static IServiceCollection AddCustomFluentValidation(this IServiceCollection services)
+        {
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new ValidationFilter());
+            })
+            .AddFluentValidation(options =>
+            {
+                options.RegisterValidatorsFromAssemblyContaining<CreateTournamentViewModelValidator>();
+            });
+            return services;
+        }
 
         public static void AddCustomApplicationServices(this IServiceCollection services)
         {
             services.AddHttpClient<IMovieService, MovieService>();
-            //services.AddSingleton<IBookService, BookService>();
+            services.AddSingleton<ITournamentService, TournamentService>();
         }
+
     }
 }

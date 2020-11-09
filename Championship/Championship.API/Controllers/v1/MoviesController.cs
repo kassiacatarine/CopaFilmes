@@ -17,9 +17,12 @@ namespace Championship.API.Controllers.v1
             _service = service;
         }
         [HttpGet]
-        public async Task<IEnumerable<MovieViewModel>> GetAsync()
+        public async Task<ActionResult<IEnumerable<MovieViewModel>>> GetAsync()
         {
-            return await _service.GetMoviesAsync();
+            var response = await _service.GetMoviesAsync();
+            if (response.Success)
+                return Ok(response);
+            return BadRequest(response);
         }
     }
 }

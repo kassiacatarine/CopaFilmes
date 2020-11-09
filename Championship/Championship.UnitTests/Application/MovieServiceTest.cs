@@ -58,7 +58,6 @@ namespace Championship.UnitTests.Application
                Times.Exactly(1),
                ItExpr.Is<HttpRequestMessage>(req => req.Method == HttpMethod.Get),
                ItExpr.IsAny<CancellationToken>());
-            Assert.Equal(16, result.Count());
             result.Should().BeEquivalentTo(expected);
         }
     }

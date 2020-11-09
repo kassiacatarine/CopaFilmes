@@ -1,4 +1,5 @@
 ﻿using Championship.Application.ViewModels;
+using Championship.Domain.SeedWork;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,15 +19,20 @@ namespace Championship.Application.Services
             _httpClient = client;
         }
 
-        public async Task<IEnumerable<MovieViewModel>> GetMoviesAsync()
+        public async Task<Response<IEnumerable<MovieViewModel>>> GetMoviesAsync()
         {
             var response = await _httpClient
                 .GetAsync($"filmes", HttpCompletionOption.ResponseHeadersRead);
 
-            response.EnsureSuccessStatusCode();
+            if (!response.IsSuccessStatusCode)
+                return new Response<IEnumerable<MovieViewModel>>(false, "Error connecting to the movie service");
 
             var jsonString = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<IEnumerable<MovieViewModel>>(jsonString);
+            return new Response<IEnumerable<MovieViewModel>>(
+                true, 
+                "Searching for movies successfully", 
+                JsonConvert.DeserializeObject<IEnumerable<MovieViewModel>>(jsonString)
+            );
         }
     }
 }
