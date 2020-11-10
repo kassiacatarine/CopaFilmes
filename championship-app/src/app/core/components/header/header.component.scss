@@ -1,0 +1,23 @@
+.container {
+  background-color: darkgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 300px;
+  margin: 50px 0;
+}
+
+.app-title {
+  color: darkslategrey;
+  font-size: 14px;
+}
+
+.title {
+  font-size: 32px;
+}
+
+.divisor {
+  width: 40px;
+  margin-bottom: 40px;
+}

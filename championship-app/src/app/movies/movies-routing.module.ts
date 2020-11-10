@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SelectionComponent } from './selection/selection.component';
 
 const routes: Routes = [
-  { path: '', component: SelectionComponent }
+  { path: '', component: SelectionComponent, pathMatch: 'full' }
 ];
 
 @NgModule({

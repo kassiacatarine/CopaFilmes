@@ -6,6 +6,6 @@ namespace Championship.Application.Services
 {
     public interface ITournamentService
     {
-        Task<Response<TournamentViewModel>> CreateAsync(CreateTournamentViewModel model);
+        Task<Response<string>> CreateAsync(CreateTournamentViewModel model);
     }
 }

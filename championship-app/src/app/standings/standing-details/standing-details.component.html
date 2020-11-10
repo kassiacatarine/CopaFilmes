@@ -1,0 +1,17 @@
+<app-header
+  title="Resultado Final"
+  description="Veja o resultado final do Campeonato de filmes de forma simples e fácil"
+  ></app-header>
+<div fxLayout="row" fxLayoutAlign="center center" *ngIf="responseStanding$ | async as responseStanding; else loading">
+  <div fxLayout="column-reverse" fxFlex="90%">
+    <div class="ranking" fxLayout="row" *ngFor="let data of responseStanding.data.rankings; let i = index" fxFlex>
+      <h2 class="position" fxFlex="5%">{{ responseStanding.data.rankings.length - i }}º</h2>
+      <h3 class="title" fxFlex>{{ data.movieTitulo }}</h3>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="90%">Loading ...</div>
+  </div>
+</ng-template>

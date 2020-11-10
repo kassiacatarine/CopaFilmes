@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Championship.Application.Services;
 using Championship.Application.ViewModels;
+using Championship.Domain.SeedWork;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -17,7 +18,7 @@ namespace Championship.API.Controllers.v1
             _service = service;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MovieViewModel>>> GetAsync()
+        public async Task<ActionResult<Response<IEnumerable<MovieViewModel>>>> GetAsync()
         {
             var response = await _service.GetMoviesAsync();
             if (response.Success)

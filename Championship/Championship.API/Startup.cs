@@ -3,14 +3,18 @@ using Championship.API.Config;
 using Championship.Application.Mappers;
 using Championship.Application.Services;
 using Championship.Application.Validators;
+using Championship.Infrastructure;
+using Championship.Infrastructure.Repositories;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Versioning.Conventions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using MongoDB.Driver;
 using System;
 
 namespace Championship.API
@@ -30,9 +34,11 @@ namespace Championship.API
             services.AddAutoMapper(cfg => cfg.AddProfile<MappingProfile>(), AppDomain.CurrentDomain.GetAssemblies());
 
             services
+                .AddCustomMongoDbContext(Configuration)
                 .AddCustomApiVersioning()
                 .AddCustomSwagger()
                 .AddCustomFluentValidation()
+                .AddCustomCors()
                 .AddCustomApplicationServices();
 
             services.AddControllers();
@@ -56,6 +62,7 @@ namespace Championship.API
             }
 
             app.UseHttpsRedirection();
+            app.UseCors();
 
             app.UseRouting();
 
@@ -70,6 +77,17 @@ namespace Championship.API
 
     static class CustomExtensionsMethods
     {
+        public static IServiceCollection AddCustomMongoDbContext(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<DbSettings>(configuration.GetSection("MongoDb"));
+           
+            services.AddSingleton<IMongoClient, MongoClient>(
+                _ => new MongoClient(configuration.GetSection("MongoDb:ConnectionString").Value));
+            services.AddTransient<IChampionshipContext, ChampionshipContext>();
+            services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
+            return services;
+        }
+
         public static IServiceCollection AddCustomApiVersioning(this IServiceCollection services)
         {
             services.AddApiVersioning(options =>
@@ -107,10 +125,26 @@ namespace Championship.API
             return services;
         }
 
+        public static IServiceCollection AddCustomCors(this IServiceCollection services)
+        {
+            services
+                .AddCors(options =>
+                {
+                    options.AddDefaultPolicy(builder =>
+                    {
+                        builder.AllowAnyOrigin();
+                        builder.AllowAnyMethod();
+                        builder.AllowAnyHeader();
+                    });
+                });
+            return services;
+        }
+
         public static void AddCustomApplicationServices(this IServiceCollection services)
         {
             services.AddHttpClient<IMovieService, MovieService>();
             services.AddSingleton<ITournamentService, TournamentService>();
+            services.AddSingleton<IStandingService, StandingService>();
         }
 
     }

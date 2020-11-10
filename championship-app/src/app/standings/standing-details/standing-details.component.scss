@@ -1,0 +1,20 @@
+.position {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 56px;
+  background-color: slategrey;
+  border-radius: 10px 0 0 10px;
+  width: 80px;
+  height: 80px;
+}
+
+.title {
+  display: flex;
+  font-size: 46px;
+  padding-left: 25px;
+  background-color: snow;
+  border-radius: 0 10px 10px 0;
+  color: black;
+  align-items: center;
+}

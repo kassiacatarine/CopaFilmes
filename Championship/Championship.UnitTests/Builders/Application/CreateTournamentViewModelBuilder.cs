@@ -6,7 +6,7 @@ namespace Championship.UnitTests.Builders.Application
     public class CreateTournamentViewModelBuilder
     {
         private CreateTournamentViewModel _createTournamentViewModel;
-        public List<string> MoviesIds => new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8" };
+        public List<string> MoviesIds => new List<string>() { "tt3606756", "tt4881806", "tt5164214", "tt7784604", "tt4154756", "tt5463162", "tt3778644", "tt3501632" };
 
         public CreateTournamentViewModelBuilder()
         {
@@ -20,6 +20,12 @@ namespace Championship.UnitTests.Builders.Application
                 MoviesIds = MoviesIds
             };
             return _createTournamentViewModel;
+        }
+
+        public CreateTournamentViewModelBuilder WhitMoviesIds(List<string> moviesIds)
+        {
+            _createTournamentViewModel.MoviesIds = moviesIds;
+            return this;
         }
 
         public CreateTournamentViewModel Build()

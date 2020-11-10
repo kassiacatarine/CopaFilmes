@@ -1,0 +1,147 @@
+{
+  "Id": null,
+  "TournamentId": null,
+  "Tournament": {
+    "Id": null,
+    "Movies": [
+      {
+        "Id": "tt3606756",
+        "Titulo": "Os Incríveis 2",
+        "Ano": 2018,
+        "Nota": 8.5
+      },
+      {
+        "Id": "tt4881806",
+        "Titulo": "Jurassic World: Reino Ameaçado",
+        "Ano": 2018,
+        "Nota": 6.7
+      },
+      {
+        "Id": "tt5164214",
+        "Titulo": "Oito Mulheres e um Segredo",
+        "Ano": 2018,
+        "Nota": 6.3
+      },
+      {
+        "Id": "tt7784604",
+        "Titulo": "Hereditário",
+        "Ano": 2018,
+        "Nota": 7.8
+      },
+      {
+        "Id": "tt4154756",
+        "Titulo": "Vingadores: Guerra Infinita",
+        "Ano": 2018,
+        "Nota": 8.8
+      },
+      {
+        "Id": "tt5463162",
+        "Titulo": "Deadpool 2",
+        "Ano": 2018,
+        "Nota": 8.1
+      },
+      {
+        "Id": "tt3778644",
+        "Titulo": "Han Solo: Uma História Star Wars",
+        "Ano": 2018,
+        "Nota": 7.2
+      },
+      {
+        "Id": "tt3501632",
+        "Titulo": "Thor: Ragnarok",
+        "Ano": 2017,
+        "Nota": 7.9
+      }
+    ]
+  },
+  "Rankings": [
+    {
+      "Id": null,
+      "Score": 0,
+      "MovieId": "tt5463162",
+      "Movie": {
+        "Id": "tt5463162",
+        "Titulo": "Deadpool 2",
+        "Ano": 2018,
+        "Nota": 8.1
+      }
+    },
+    {
+      "Id": null,
+      "Score": 0,
+      "MovieId": "tt3778644",
+      "Movie": {
+        "Id": "tt3778644",
+        "Titulo": "Han Solo: Uma História Star Wars",
+        "Ano": 2018,
+        "Nota": 7.2
+      }
+    },
+    {
+      "Id": null,
+      "Score": 0,
+      "MovieId": "tt7784604",
+      "Movie": {
+        "Id": "tt7784604",
+        "Titulo": "Hereditário",
+        "Ano": 2018,
+        "Nota": 7.8
+      }
+    },
+    {
+      "Id": null,
+      "Score": 1,
+      "MovieId": "tt4881806",
+      "Movie": {
+        "Id": "tt4881806",
+        "Titulo": "Jurassic World: Reino Ameaçado",
+        "Ano": 2018,
+        "Nota": 6.7
+      }
+    },
+    {
+      "Id": null,
+      "Score": 0,
+      "MovieId": "tt5164214",
+      "Movie": {
+        "Id": "tt5164214",
+        "Titulo": "Oito Mulheres e um Segredo",
+        "Ano": 2018,
+        "Nota": 6.3
+      }
+    },
+    {
+      "Id": null,
+      "Score": 2,
+      "MovieId": "tt3606756",
+      "Movie": {
+        "Id": "tt3606756",
+        "Titulo": "Os Incríveis 2",
+        "Ano": 2018,
+        "Nota": 8.5
+      }
+    },
+    {
+      "Id": null,
+      "Score": 1,
+      "MovieId": "tt3501632",
+      "Movie": {
+        "Id": "tt3501632",
+        "Titulo": "Thor: Ragnarok",
+        "Ano": 2017,
+        "Nota": 7.9
+      }
+    },
+    {
+      "Id": null,
+      "Score": 3,
+      "MovieId": "tt4154756",
+      "Movie": {
+        "Id": "tt4154756",
+        "Titulo": "Vingadores: Guerra Infinita",
+        "Ano": 2018,
+        "Nota": 8.8
+      }
+    }
+  ]
+}

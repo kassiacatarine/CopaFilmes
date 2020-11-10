@@ -1,0 +1,54 @@
+{
+  "Id": "12345",
+  "TournamentId": null,
+  "Rankings": [
+    {
+      "Id": null,
+      "Score": 0,
+      "MovieId": "tt5463162",
+      "MovieTitulo": "Deadpool 2"
+    },
+    {
+      "Id": null,
+      "Score": 0,
+      "MovieId": "tt3778644",
+      "MovieTitulo": "Han Solo: Uma História Star Wars"
+    },
+    {
+      "Id": null,
+      "Score": 0,
+      "MovieId": "tt7784604",
+      "MovieTitulo": "Hereditário"
+    },
+    {
+      "Id": null,
+      "Score": 0,
+      "MovieId": "tt5164214",
+      "MovieTitulo": "Oito Mulheres e um Segredo"
+    },
+    {
+      "Id": null,
+      "Score": 1,
+      "MovieId": "tt4881806",
+      "MovieTitulo": "Jurassic World: Reino Ameaçado"
+    },
+    {
+      "Id": null,
+      "Score": 1,
+      "MovieId": "tt3501632",
+      "MovieTitulo": "Thor: Ragnarok"
+    },
+    {
+      "Id": null,
+      "Score": 2,
+      "MovieId": "tt3606756",
+      "MovieTitulo": "Os Incríveis 2"
+    },
+    {
+      "Id": null,
+      "Score": 3,
+      "MovieId": "tt4154756",
+      "MovieTitulo": "Vingadores: Guerra Infinita"
+    }
+  ]
+}

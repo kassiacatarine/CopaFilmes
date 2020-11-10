@@ -1,5 +1,9 @@
-<div fxLayout="row" fxLayoutAlign="center center">
-  <form (onSubmit)="handleSubmitMovies()" fxFlex="90%">
+<app-header
+  title="Fase de Seleção"
+  description="Selecione 8 filmes que você deseja que entrem na competição e depois pressione o botão Gerar Meu Campeonato para prosseguir."
+  ></app-header>
+<div fxLayout="row" fxLayoutAlign="center center" *ngIf="responseMovies$ | async as responseMovies; else loading">
+  <form [formGroup]="tournamentForm" (ngSubmit)="handleSubmitMovies()" fxFlex="90%" *ngIf="responseMovies.success">
     <div fxLayout="row wrap" fxLayoutAlign="space-between">
       <div fxLayout="column">
         <h2 fxFlex>
@@ -15,6 +19,7 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="center">
       <mat-selection-list
+        formControlName="moviesIds"
         fxLayout="row wrap"
         fxLayoutGap.gt-xs="20px" fxFlexOffset.gt-xs="3"
         fxLayoutGap.gt-md="35px"
@@ -26,14 +31,20 @@
           class="mat-elevation-z1"
           [disabled]="movies.selectedOptions.selected.length >= 8 && !movie.selected"
           checkboxPosition="before"
-          *ngFor="let shoe of typesOfShoes"
+          *ngFor="let data of responseMovies.data"
+          [value]="data.id"
           fxFlex.gt-xs="47%" fxFlex.gt-md="22%"
           #movie
         >
-          <h3 mat-line>{{shoe}}</h3>
-          <div mat-line>2018</div>
+          <h3 mat-line>{{ data.titulo }}</h3>
+          <div mat-line>{{ data.ano }}</div>
         </mat-list-option>
       </mat-selection-list>
     </div>
   </form>
 </div>
+<ng-template #loading>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="90%">Loading ...</div>
+  </div>
+</ng-template>
