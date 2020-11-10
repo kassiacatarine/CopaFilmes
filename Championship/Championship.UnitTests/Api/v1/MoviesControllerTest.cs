@@ -43,7 +43,7 @@ namespace Championship.UnitTests.Api.v1
         }
 
         [Fact]
-        public async Task CreateTournamentWhitValidsMoviesAndReturnsCreated()
+        public async Task GetMoviesWhitAvailableServiceAndReturnsOK()
         {
             // Arrange
             string content = File.ReadAllText($"DataTests{Path.DirectorySeparatorChar}Movies.json");

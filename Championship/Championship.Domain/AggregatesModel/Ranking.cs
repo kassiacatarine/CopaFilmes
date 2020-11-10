@@ -1,10 +1,23 @@
-﻿namespace Championship.Domain.AggregatesModel
+﻿using Championship.Domain.SeedWork;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace Championship.Domain.AggregatesModel
 {
-    public class Ranking
+    public class Ranking : Entity
     {
-        public string Id { get; set; }
-        public int Position { get; set; }
-        public string MovieId { get; set; }
-        public Movie Movie { get; set; }
+        public int Score { get; private set; }
+        public Movie Movie { get; private set; }
+
+        public Ranking(Movie movie)
+        {
+            Score = 0;
+            Movie = movie;
+        }
+
+        public void AddScoreWinner()
+        {
+            Score++;
+        }
     }
 }
