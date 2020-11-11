@@ -8,6 +8,9 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["Championship.API/Championship.API.csproj", "Championship.API/"]
+COPY ["Championship.Infrastructure/Championship.Infrastructure.csproj", "Championship.Infrastructure/"]
+COPY ["Championship.Domain/Championship.Domain.csproj", "Championship.Domain/"]
+COPY ["Championship.Application/Championship.Application.csproj", "Championship.Application/"]
 RUN dotnet restore "Championship.API/Championship.API.csproj"
 COPY . .
 WORKDIR "/src/Championship.API"

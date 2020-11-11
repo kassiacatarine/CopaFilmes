@@ -8,7 +8,7 @@ Projeto para realizar a Copa do mundo de filmes, a partir de 8 filmes o campeona
 - Link Deploy: [Site](https://copafilmes.netlify.app/)
 - Rotas de acesso:
   - Criar campeonato: [Link](https://copafilmes.netlify.app/)
-  - Visualizar classificação: [Link](https://copafilmes.netlify.app/standings/5faaf1b501424a4bb430675b)
+  - Visualizar classificação: [Link](https://copafilmes.netlify.app/standings/5fab2bf12d29f29bc1b72951)
 - Comando de execução:
 
       cd championship-app && ng s -o
