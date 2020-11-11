@@ -21,10 +21,10 @@ Projeto para realizar a Copa do mundo de filmes, a partir de 8 filmes o campeona
 
 - Tecnologia: Dotnet Core 3.1
 - Banco de dados: MongoDb
-- Design de arquitetura: DDD
+- Design de arquitetura: DDD e outros
 - Framework de teste: XUnit
-- Link Deploy: [Site](https://copafilmes.netlify.app/)
+- Link Deploy: [Site](https://copafilmes.herokuapp.com/)
 - Rotas de acesso:
-  - Get Movies (Filmes):
-  - Create Tournament (Campeonato):
-  - Get Standing (Classificação):
+  - Get Movies (Filmes): GET [Link](https://copafilmes.herokuapp.com/api/v1/movies)
+  - Create Tournament (Campeonato): POST [Link](https://copafilmes.herokuapp.com/api/v1/tournaments)
+  - Get Standing (Classificação): GET [Link](https://copafilmes.herokuapp.com/api/v1/standings/5fab2bf12d29f29bc1b72951)

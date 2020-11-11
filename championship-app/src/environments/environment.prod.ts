@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: 'https://localhost:44357/api/'
+  apiURL: 'https://copafilmes.herokuapp.com/api/'
 };
